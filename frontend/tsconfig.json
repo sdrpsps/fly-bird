@@ -3,5 +3,8 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true, // 跳过第三方库的类型检查
+    "exclude": [
+      "node_modules"
+    ]
   }
 }
