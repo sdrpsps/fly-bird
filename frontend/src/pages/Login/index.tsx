@@ -2,6 +2,7 @@ import React, {useCallback, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/types";
 import {modifyUserActionCreator} from "../../store/reducers/userReducer";
+import {Button} from "@mantine/core";
 
 export default function Login() {
     useEffect(() => {
@@ -28,9 +29,9 @@ export default function Login() {
     }, [dispatch])
     return (
         <>
-            <div>Hello Login</div>
+            <div className="bg-red-200 w-full">Hello Login</div>
             <div>{JSON.stringify(user)}</div>
-            <button onClick={updateUserInformation}>click me</button>
+            <Button onClick={updateUserInformation}>update user</Button>
         </>
 
     )

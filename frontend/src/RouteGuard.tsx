@@ -4,7 +4,7 @@ import {useEffect} from "react";
 export default function RouteGuard() {
     const navigate = useNavigate()
     useEffect(() => {
-        const isLogin = false
+        const isLogin = true
         if (!isLogin) {
             navigate('/login')
         }
