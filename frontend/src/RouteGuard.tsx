@@ -8,7 +8,7 @@ export default function RouteGuard() {
         if (!isLogin) {
             navigate('/login')
         }
-    }, [])
+    }, [navigate])
 
     return (
         <Outlet/>
