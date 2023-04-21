@@ -1,5 +1,5 @@
-import {UserInformation} from "./reducers/userTypes";
+import { UserInformation } from "./reducers/userTypes";
 
 export interface RootState {
-    user: UserInformation
+  user: UserInformation;
 }
