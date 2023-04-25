@@ -9,7 +9,7 @@ import getLocalTheme from '../../../../../../../theme/getLocalTheme';
 import { ValidTheme } from '../../../../../../../theme/types';
 
 export default function useThemeSelectWorker() {
-  // 选项国际化
+  // 主题国际化选项
   const { t } = useTranslation();
   const themeSelectData = useMemo<SelectItem[]>(() => {
     return [

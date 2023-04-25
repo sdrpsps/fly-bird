@@ -11,7 +11,10 @@ import { ValidTheme } from '../../../../../../theme/types';
 import useThemeSelectWorker from './hooks/useThemeSelectWorker';
 
 export default function Index() {
+  // 语言选项、当前所选语言、修改语言方法
   const { languageSelectData, presentLanguage, mutatePresentLanguage } = useLanguageSelectWorker();
+
+  // 主题选项、当前所选主题、修改主题方法
   const { themeSelectData, presentTheme, mutatePresentTheme } = useThemeSelectWorker();
 
   return (

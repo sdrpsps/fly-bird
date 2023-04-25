@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 // types
 import { ValidLanguage } from '../../../../../../../i18n/types';
 
+// 语言国际化选项
 const languageSelectData: SelectItem[] = [
   {
     label: '简体中文',
