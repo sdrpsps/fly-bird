@@ -53,6 +53,7 @@ export function LeftSelectPanel<ValidSelectValue = string>({
       {map(selectData, (selectDescriptor) => {
         return (
           <Box
+            className="cursor-pointer"
             onClick={() => {
               changeCurrentSelect(selectDescriptor.value as ValidSelectValue);
             }}

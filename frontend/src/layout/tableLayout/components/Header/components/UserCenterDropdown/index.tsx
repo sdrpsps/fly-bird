@@ -3,13 +3,16 @@ import { Avatar, Box, Text } from '@mantine/core';
 
 // components
 import UserCenterSelectItem from './components/UserCenterSelectItem';
-import useLanguageSelectResolver from './hooks/useLanguageSelectResolver';
+import useLanguageSelectWorker from './hooks/useLanguageSelectWorker';
 
 // types
 import { ValidLanguage } from '../../../../../../i18n/types';
+import { ValidTheme } from '../../../../../../theme/types';
+import useThemeSelectWorker from './hooks/useThemeSelectWorker';
 
 export default function Index() {
-  const { languageSelectData, presentLanguage, mutatePresentLanguage } = useLanguageSelectResolver();
+  const { languageSelectData, presentLanguage, mutatePresentLanguage } = useLanguageSelectWorker();
+  const { themeSelectData, presentTheme, mutatePresentTheme } = useThemeSelectWorker();
 
   return (
     <Box>
@@ -28,6 +31,13 @@ export default function Index() {
         selectData={languageSelectData}
         onSelectChange={mutatePresentLanguage}
         defaultSelect={presentLanguage}
+      />
+      {/* 主题 */}
+      <UserCenterSelectItem<ValidTheme>
+        label="theme"
+        selectData={themeSelectData}
+        onSelectChange={mutatePresentTheme}
+        defaultSelect={presentTheme}
       />
     </Box>
   );
