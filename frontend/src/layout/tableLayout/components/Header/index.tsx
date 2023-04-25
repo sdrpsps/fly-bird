@@ -1,9 +1,12 @@
 // deps
-import { Box, Header as HeaderContainer, Text } from '@mantine/core';
+import { Avatar, Box, Button, Header as HeaderContainer, Menu, Text } from '@mantine/core';
 
 // svg
 import { IconChevronLeft, IconFolderFilled, IconLock, IconStar } from '@tabler/icons-react';
 import { useCallback } from 'react';
+
+// components
+import UserCenterDropdown from './components/UserCenterDropdown';
 
 export default function Header() {
   // 双击表名修改
@@ -42,18 +45,25 @@ export default function Header() {
           </Box>
         </Box>
         {/* 右边区域 */}
-        <Box className="flex h-full items-center ">
+        <Box className="flex h-full items-center pr-4">
           {/* 按钮 */}
-          <Box className="flex items-center">
-            <Box className="ml-3 flex h-8 w-20 items-center justify-center gap-1 rounded-md bg-#3370FF text-sm text-white">
+          <Box className="mr-2 flex items-center">
+            <Button color="transparent" className="bg-#3370FF">
               <IconLock width={16} height={16} />
-              <Text>分享</Text>
-            </Box>
-            <Box className="ml-3 flex h-8 w-20 items-center justify-center gap-1 rounded-md bg-#3370FF text-sm text-white">
-              <IconLock width={16} height={16} />
-              <Text>分享</Text>
-            </Box>
+              <Text className="ml-1">分享</Text>
+            </Button>
           </Box>
+          {/* 用户中心 */}
+          <Menu position="bottom-start">
+            <Menu.Target>
+              <Avatar color="#3370FF" className="cursor-pointer rounded-full bg-#3370FF">
+                向阳
+              </Avatar>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <UserCenterDropdown />
+            </Menu.Dropdown>
+          </Menu>
         </Box>
       </Box>
     </HeaderContainer>
