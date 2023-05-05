@@ -3,9 +3,9 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true, // 跳过第三方库的类型检查
-    "resolveJsonModule": true,
-    "exclude": [
-      "node_modules"
-    ]
-  }
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
