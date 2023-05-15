@@ -7,12 +7,12 @@ import useThemeSelectWorker from './layout/tableLayout/components/Header/compone
 export default function RouteGuard() {
   const navigate = useNavigate();
   useEffect(() => {
-    const isLogin = true;
+    /* const isLogin = true;
     if (!isLogin) {
       navigate('/login');
     } else {
-      navigate('/home');
-    }
+      navigate('/sheet');
+    } */
   }, [navigate]);
 
   const { realTimeTheme } = useThemeSelectWorker();

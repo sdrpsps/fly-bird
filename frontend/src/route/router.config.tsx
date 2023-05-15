@@ -1,21 +1,21 @@
-import { createBrowserRouter } from "react-router-dom";
-import Login from "../pages/Login";
-import RouteGuard from "../RouteGuard";
-import { lazy } from "react";
+import { createBrowserRouter } from 'react-router-dom';
+import Login from '../pages/Login';
+import RouteGuard from '../RouteGuard';
+import { lazy } from 'react';
 
-const Home = lazy(() => import("../pages/Home"));
+const Sheet = lazy(() => import('../pages/Sheet'));
 
 const routes = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RouteGuard />,
     children: [
       {
-        path: "/home",
-        element: <Home />,
+        path: '/sheet/:sheetId/:viewId',
+        element: <Sheet />,
       },
       {
-        path: "/login",
+        path: '/login',
         element: <Login />,
       },
     ],

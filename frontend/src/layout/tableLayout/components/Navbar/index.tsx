@@ -1,13 +1,13 @@
 import { ActionIcon, Box, Divider, Input, Navbar as NavbarContainer, Text } from '@mantine/core';
-import useSheets from '../../../../hooks/useSheets';
-import { map } from 'lodash';
-import IconSheet from '../../../../assets/svgComponents/IconSheet';
 import { IconDots, IconPlus } from '@tabler/icons-react';
+import { map } from 'lodash';
 import { useCallback, useRef, useState } from 'react';
+import IconSheet from '../../../../assets/svgComponents/IconSheet';
+import useSheets from '../../../../hooks/useSheets';
 
 export default function Navbar() {
   // hooks
-  const { sheetsArray, createSheetDispatch } = useSheets();
+  const { sheetsArray, createSheetDispatch, navigateToTargetView } = useSheets();
 
   // 创建表格输入框显示状态
   const [showCreateSheetInput, setShowCreateSheetInput] = useState<boolean>(false);
@@ -37,6 +37,9 @@ export default function Navbar() {
             {map(sheetsArray, (sheet) => {
               return (
                 <Box
+                  onClick={() => {
+                    navigateToTargetView(sheet.id);
+                  }}
                   key={sheet.id}
                   className="flex h-9 cursor-pointer items-center justify-between rounded px-1 hover:bg-slate-200"
                 >
