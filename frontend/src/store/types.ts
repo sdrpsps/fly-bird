@@ -19,6 +19,7 @@ export interface Column<ColumnType extends keyof ColumnMap> {
   name: string;
   columnType: 'TEXT' | 'SELECT';
   columnProps: ColumnMap[ColumnType]; // 意味着根据不同列类型，会有不同的字段
+  width?: number;
 }
 
 // 比如现在要创建一个 Select 类型实例，就有类型提示了
@@ -31,10 +32,19 @@ export interface Column<ColumnType extends keyof ColumnMap> {
 //   },
 // };
 
+// 列的配置
+export interface ColumnConfig {
+  width: number;
+  sort: number;
+}
+
 // 表的视图类型
 export interface View {
   id: Key;
   name: string;
+  columnsConfig: {
+    [columnId: Key]: ColumnConfig;
+  };
 }
 
 // 表的行类型

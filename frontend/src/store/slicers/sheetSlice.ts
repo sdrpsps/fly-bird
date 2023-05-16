@@ -17,15 +17,27 @@ let initialState: { [sheetId: Key]: Sheet } = {
         name: '多行文本',
         columnType: 'TEXT',
         columnProps: {},
+        width: 200,
       },
     },
     views: {
       'ae1efad8-27f6-49ad-9931-23b48df4eeca': {
         id: 'ae1efad8-27f6-49ad-9931-23b48df4eeca',
         name: '表格视图',
+        columnsConfig: {
+          '1c133347-19a8-44b5-801e-e9e43891a9eb': {
+            width: 200,
+            sort: 0,
+          },
+        },
       },
     },
-    rows: {},
+    rows: {
+      'ae1efad8-27f6-49ad-9931-23b48df4xxca': {
+        id: 'ae1efad8-27f6-49ad-9931-23b48df4xxca',
+        '1c133347-19a8-44b5-801e-e9e43891a9eb': 'helloworld',
+      },
+    },
   },
 };
 
@@ -54,8 +66,16 @@ const sheetSlice = createSlice({
     deleteSheet: (state, action: PayloadAction) => {},
     // 重命名表格
     renameSheet: (state, action: PayloadAction) => {},
+    // 临时修改单元格的值
+    updateRow: (
+      state,
+      action: PayloadAction<{ sheetId: Key; viewId: Key; colId: Key; rowId: Key; newValue: string }>,
+    ) => {
+      const { sheetId, colId, rowId, newValue } = action.payload;
+      state[sheetId].rows[rowId][colId] = newValue;
+    },
   },
 });
 
-export const { createSheet, deleteSheet, renameSheet } = sheetSlice.actions;
+export const { createSheet, deleteSheet, renameSheet, updateRow } = sheetSlice.actions;
 export default sheetSlice.reducer;

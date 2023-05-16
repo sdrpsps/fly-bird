@@ -3,7 +3,7 @@ import { RootState } from '../store';
 import { Key, useCallback, useMemo } from 'react';
 import { get } from 'lodash';
 import { Sheet } from '../store/types';
-import { createSheet } from '../store/slicers/sheetSlice';
+import { createSheet, updateRow } from '../store/slicers/sheetSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function useSheets() {
@@ -56,6 +56,45 @@ export default function useSheets() {
     };
   }, [params]);
 
+  // 获取对应视图的列
+  const getTargetViewColumns = useCallback(
+    (sheetId: Key, viewId: Key) => {
+      const targetSheet = get(sheets, [sheetId]);
+      const targetView = get(targetSheet, ['views', viewId]);
+
+      return {
+        columns: targetSheet.columns,
+        columnsConfig: targetView.columnsConfig,
+        sheetId,
+        columnsArr: Object.values(targetSheet.columns),
+        columnsConfigArr: Object.values(targetView.columnsConfig),
+        viewId,
+      };
+    },
+    [sheets],
+  );
+
+  // 获取对应视图的行
+  const getTargetViewRows = useCallback(
+    (sheetId: Key, viewId: Key) => {
+      const targetSheet = get(sheets, [sheetId]);
+
+      return {
+        rows: targetSheet.rows,
+        rowsArr: Object.values(targetSheet.rows),
+      };
+    },
+    [sheets],
+  );
+
+  // 设置单元格的值
+  const setCellValue = useCallback(
+    (sheetId: Key, viewId: Key, colId: Key, rowId: Key, value: string) => {
+      dispatch(updateRow({ sheetId, viewId, colId, rowId, newValue: value }));
+    },
+    [dispatch],
+  );
+
   return {
     sheets,
     sheetsArray,
@@ -65,5 +104,8 @@ export default function useSheets() {
     getTargetSheetViewsArray,
     navigateToTargetView,
     sheetUrlParams,
+    getTargetViewColumns,
+    getTargetViewRows,
+    setCellValue,
   };
 }
